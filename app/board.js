@@ -12,6 +12,9 @@ Board.prototype = {
     }
     this._fleet.push(ship);
   },
+  isHit: function(location){
+    return this._getOccupiedLocations().includes(location);
+  },
   _getOccupiedLocations: function(){
     var occupiedLocations = []
     for(var ship = 0; ship < this._fleet.length; ship++){

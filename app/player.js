@@ -11,6 +11,9 @@ Player.prototype = {
   place: function(ship, location){
     var newShip = this._create(ship,location)
     this._board.place(newShip);
+  },
+  takeFire: function(location){
+    return this._board.isHit(location) ? 'Hit!' : 'Miss!';
   }
 };
 

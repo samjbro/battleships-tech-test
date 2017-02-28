@@ -19,4 +19,16 @@ describe('Board', function(){
     otherShip.location = 'C4';
     expect(function(){ board.place(otherShip); }).to.throw('Location already occupied!');
   });
+  describe('when taking fire', function(){
+    beforeEach(function(){
+      ship.location = 'C4';
+      board.place(ship);
+    });
+    it('is hit if board has a ship at the location', function(){
+      expect(board.isHit('C4')).to.be.true;
+    });
+    it('is not hit if board has no ship at the location', function(){
+      expect(board.isHit('C5')).to.be.false;
+    });
+  });
 });
