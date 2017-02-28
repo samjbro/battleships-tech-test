@@ -25,10 +25,26 @@ describe('Board', function(){
       board.place(ship);
     });
     it('is hit if board has a ship at the location', function(){
-      expect(board.isHit('C4')).to.be.true;
+      ship.isSunk.returns(false);
+      expect(board.isHit('C4')).to.equal('Hit!');
+      expect(ship.takeHit).to.have.been.called;
     });
     it('is not hit if board has no ship at the location', function(){
-      expect(board.isHit('C5')).to.be.false;
+      expect(board.isHit('C5')).to.equal('Miss!');
+      expect(ship.takeHit).not.to.have.been.called;
+    });
+  });
+  describe('#allSunk', function(){
+    beforeEach(function(){
+      board.place(ship);
+    });
+    it('is false if any ships have not been sunk', function(){
+      ship.isSunk.returns(false);
+      expect(board.allSunk()).to.be.false;
+    });
+    it('is true if all ships have been sunk', function(){
+      ship.isSunk.returns(true);
+      expect(board.allSunk()).to.be.true;
     });
   });
 });

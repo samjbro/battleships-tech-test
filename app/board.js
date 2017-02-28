@@ -13,7 +13,19 @@ Board.prototype = {
     this._fleet.push(ship);
   },
   isHit: function(location){
-    return this._getOccupiedLocations().includes(location);
+    var hitShip = this._getShipAt(location);
+    var hitReport = hitShip ? 'Hit!' : 'Miss!';
+    if(hitShip){
+      hitShip.takeHit();
+      if (hitShip.isSunk()) hitReport += " Your ship has sunk!";
+    }
+    return hitReport;
+  },
+  allSunk: function(){
+    for(var ship=0; ship < this._fleet.length; ship++){
+      if(!this._fleet[ship].isSunk()) return false;
+    }
+    return true;
   },
   _getOccupiedLocations: function(){
     var occupiedLocations = []
@@ -21,6 +33,11 @@ Board.prototype = {
       occupiedLocations.push(this._fleet[ship].location);
     }
     return occupiedLocations;
+  },
+  _getShipAt: function(location){
+    for (var ship = 0; ship < this._fleet.length; ship++){
+      if (this._fleet[ship].location === location) return (this._fleet[ship])
+    }
   }
 };
 

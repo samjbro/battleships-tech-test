@@ -13,7 +13,10 @@ Player.prototype = {
     this._board.place(newShip);
   },
   takeFire: function(location){
-    return this._board.isHit(location) ? 'Hit!' : 'Miss!';
+    return this._board.isHit(location);
+  },
+  hasLost: function(){
+    return this._board.allSunk();
   }
 };
 

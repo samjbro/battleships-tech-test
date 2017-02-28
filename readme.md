@@ -2,9 +2,6 @@
 
 ```
   User Stories (implemented)
-
-  User Stories (unimplemented)
-
     As a player,
     So I can set up my side of the game,
     I want to add a ship to my board.
@@ -22,11 +19,13 @@
     I want it to report a hit or miss.
 
     As a player,
-    So I can know if a ship was sunk,
-    I want it to report its status.
-
+    So I can know when a ship was sunk,
+    I want it to report when it sinks.
+    
     As a player,
     So I can know if I can keep playing,
     I want to have lost when all my ships are sunk.
+
+  User Stories (unimplemented)
 
 ```

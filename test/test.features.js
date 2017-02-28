@@ -17,10 +17,26 @@ describe('Features', function(){
       player.place(Ship,'C4');
     });
     it('reports a hit if a ship is at the specified location', function(){
-      expect(player.takeFire('C4')).to.equal('Hit!');
+      // expect(player.takeFire('C4')).to.equal('Hit!');
+      expect(player.takeFire('C4')).to.equal('Hit! Your ship has sunk!');
     });
     it('reports a miss if a ship is not at the specified location', function(){
       expect(player.takeFire('C5')).to.equal('Miss!');
+    });
+    it('reports that it has sunk', function(){
+      expect(player.takeFire('C4')).to.equal('Hit! Your ship has sunk!');
+    });
+  });
+  describe('winning & losing', function(){
+    beforeEach(function(){
+      player.place(Ship,'C4');
+    });
+    it('has not lost if any ship has not been sunk', function(){
+      expect(player.hasLost()).to.be.false;
+    });
+    it('has lost when all ships have been sunk', function(){
+      player.takeFire('C4');
+      expect(player.hasLost()).to.be.true;
     });
   });
 });
