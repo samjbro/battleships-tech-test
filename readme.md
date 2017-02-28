@@ -1,5 +1,10 @@
 ## Battleships tech test
 
+#### Setup:
+- `git clone _______`
+- `npm init`
+- run tests with `npm test`
+
 ```
   User Stories (implemented)
     As a player,
@@ -21,11 +26,12 @@
     As a player,
     So I can know when a ship was sunk,
     I want it to report when it sinks.
-    
+
     As a player,
     So I can know if I can keep playing,
     I want to have lost when all my ships are sunk.
 
   User Stories (unimplemented)
+
 
 ```
