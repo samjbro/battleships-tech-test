@@ -31,11 +31,12 @@
     So I can know if I can keep playing,
     I want to have lost when all my ships are sunk.
 
-  User Stories (unimplemented)
-  Wave 1:
     As a player,
     So I can play a coherent game,
     I want my board to have a bounded size.
+
+  User Stories (unimplemented)
+  Wave 1:
 
     As a player,
     So I can avoid illegal ship placement,

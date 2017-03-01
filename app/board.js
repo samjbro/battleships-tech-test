@@ -1,7 +1,8 @@
-function Board(){
+function Board(rows,cols){
   this._fleet = [];
-  this._length = 10;
-  this._width = 10;
+  this._cols = typeof cols !== 'undefined' ? cols : 10;
+  this._rows = typeof rows !== 'undefined' ? rows : 10;
+  this._locations = this.getLocations();
 }
 
 Board.prototype = {
@@ -9,6 +10,9 @@ Board.prototype = {
     return this._fleet;
   },
   place: function(ship){
+    if(!this.getLocations().includes(ship.location)){
+      throw new Error('Ship must be placed on the ' + this._cols + 'x' + this._rows + ' board!');
+    }
     if(this._getOccupiedLocations().includes(ship.location)){
       throw new Error('Location already occupied!');
     }
@@ -29,8 +33,15 @@ Board.prototype = {
     }
     return true;
   },
-  size: function(){
-    return this._length + ' by ' + this._width;
+  getLocations: function(){
+    var locs = []
+    var alphArray = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').slice(0,this._cols);
+    for(var col = 0; col<this._cols; col++){
+      for(var row=1; row <= this._rows; row++){
+        locs.push(alphArray[col]+(row));
+      }
+    }
+    return locs;
   },
   _getOccupiedLocations: function(){
     var occupiedLocations = []
