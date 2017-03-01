@@ -8,6 +8,9 @@ describe('Board', function(){
   it('has no ships initially', function(){
     expect(board.ships()).to.eql([]);
   });
+  it('has a size', function(){
+    expect(board.size()).to.equal("10 by 10");
+  });
   it('can place a ship', function(){
     board.place(ship);
     expect(board.ships()).to.eql([ship]);

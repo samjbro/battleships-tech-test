@@ -1,5 +1,7 @@
 function Board(){
   this._fleet = [];
+  this._length = 10;
+  this._width = 10;
 }
 
 Board.prototype = {
@@ -26,6 +28,9 @@ Board.prototype = {
       if(!this._fleet[ship].isSunk()) return false;
     }
     return true;
+  },
+  size: function(){
+    return this._length + ' by ' + this._width;
   },
   _getOccupiedLocations: function(){
     var occupiedLocations = []
